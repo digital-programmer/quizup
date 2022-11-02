@@ -7,7 +7,7 @@ const { Title } = Typography;
 
 const Home = (props: { handleGameStartClick: () => void; }) => {
     return (<>
-    <div className="flex col halign inherit">
+    <div className="home flex col halign inherit">
         <Row>
             <Col span={22} offset={1}>
                 <div>
