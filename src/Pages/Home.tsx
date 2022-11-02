@@ -12,10 +12,10 @@ const Home = (props: { handleGameStartClick: () => void; }) => {
             <Col span={22} offset={1}>
                 <div>
                     <div className="circle flex center mx-auto">
-                        <Title type="danger" level={2}>Quiz Up</Title>
+                        <Title type="danger">Quiz Up</Title>
                     </div>
                 </div>
-                <Divider />
+                <Divider/>
                 <StartButton text={'Start Quiz'} handleClick={props.handleGameStartClick}/>
             </Col>
         </Row>
