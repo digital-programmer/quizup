@@ -29,14 +29,13 @@ class App extends React.Component<{}, AppState> {
   }
 
   handleGameStart() {
-    if (this.state.questions.length) {
-      this.setState({
-        started: true
-      })
-    }
+    this.fetchQuizData();
   }
 
   async fetchQuizData() {
+    this.setState({
+      loading: true
+    })
     try {
       const res = await apiClient.get(`questions`, {
         params: {
@@ -46,22 +45,27 @@ class App extends React.Component<{}, AppState> {
       })
       this.setState({
         questions: res.data,
+        started: true,
+        loading: false
       })
     } catch(err: ApiError | AxiosError | Error | any) {
+      this.setState({
+        loading: false
+      })
       console.error(err);
       showErrorToast(err?.error || err?.message || 'Error in fetching data');
     }
   }
 
   componentDidMount() {
-    this.fetchQuizData();
   }
 
   render() {
     return (
       <>
-        {!this.state.started && <Home handleGameStartClick={this.handleGameStart}/>}
-        {this.state.started && <Quiz/>}
+        {!this.state.started && !this.state.loading && <Home handleGameStartClick={this.handleGameStart}/>}
+        {this.state.started  && !this.state.loading && <Quiz/>}
+        {this.state.loading && <h2>Loading...</h2>}
         <ToastContainer 
           position="top-right"
           autoClose={3000}
