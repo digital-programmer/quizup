@@ -24,9 +24,19 @@ class App extends React.Component<{}, AppState> {
       loading: false,
       started: false
     }
+
+    this.handleGameStart = this.handleGameStart.bind(this);
   }
 
-  async componentDidMount() {
+  handleGameStart() {
+    if (this.state.questions.length) {
+      this.setState({
+        started: true
+      })
+    }
+  }
+
+  async fetchQuizData() {
     try {
       const res = await apiClient.get(`questions`, {
         params: {
@@ -36,7 +46,6 @@ class App extends React.Component<{}, AppState> {
       })
       this.setState({
         questions: res.data,
-        started: true
       })
     } catch(err: ApiError | AxiosError | Error | any) {
       console.error(err);
@@ -44,10 +53,14 @@ class App extends React.Component<{}, AppState> {
     }
   }
 
+  componentDidMount() {
+    this.fetchQuizData();
+  }
+
   render() {
     return (
       <>
-        {!this.state.started && <Home/>}
+        {!this.state.started && <Home handleGameStartClick={this.handleGameStart}/>}
         {this.state.started && <Quiz/>}
         <ToastContainer 
           position="top-right"
