@@ -65,7 +65,7 @@ class App extends React.Component<{}, AppState> {
       <>
         {!this.state.started && !this.state.loading && <Home handleGameStartClick={this.handleGameStart}/>}
         {this.state.started  && !this.state.loading && <Quiz/>}
-        {this.state.loading && <h2>Loading...</h2>}
+        {this.state.loading && <h3>Loading...</h3>}
         <ToastContainer 
           position="top-right"
           autoClose={3000}

@@ -1,7 +1,39 @@
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import '~antd/dist/antd.css';
+
+:root {
+    --black: #333;
+    --danger: #ff7875;
+}
+
+#root {
+    height: 95vh;
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.mx-auto {
+    margin: 0 auto;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.valign {
+    align-items: center;
+}
+
+.halign {
+    justify-content: center;
+}
+
+.inherit {
+    height: inherit;
 }

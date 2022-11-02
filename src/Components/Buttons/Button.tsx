@@ -1,9 +1,10 @@
 import React from "react";
+import { Button } from 'antd';
 
-const Button = (props: {handleClick(): void;text: string}) => {
+const StartButton = (props: {handleClick(): void;text: string}) => {
     return <>
-        <button type='button' onClick={() => props.handleClick()}>{props.text}</button>
+        <Button shape="round" type="primary" block danger onClick={() => props.handleClick()}>{props.text}</Button>
     </>
 }
 
-export default Button;
+export default StartButton;
