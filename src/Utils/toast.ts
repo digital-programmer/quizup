@@ -1,4 +1,3 @@
-import { Http2ServerResponse } from 'http2';
 import {toast} from 'react-toastify';
 
 const showErrorToast = (message: string) => {

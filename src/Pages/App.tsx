@@ -1,14 +1,19 @@
 import React from 'react';
 import {ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
-import apiClient from './Utils/api';
-import {showErrorToast, showSuccessToast} from './Utils/toast'
-import {ApiError} from './Types/error'
 import { AxiosError } from 'axios';
-import Quiz from './Pages/Quiz';
-import { AppState } from './Types/appState';
-import Home from './Pages/Home';
+
+// css imports
+import 'react-toastify/dist/ReactToastify.css';
+import '../Styles/App.css';
+// Type imports
+import { AppState } from '../Types/appState';
+import {ApiError} from '../Types/error'
+// Util imports
+import apiClient from '../Utils/api';
+import {showErrorToast} from '../Utils/toast'
+// Page and component imports
+import Quiz from './Quiz';
+import Home from './Home';
 
 class App extends React.Component<{}, AppState> {
   constructor(props: {} | Readonly<{}>) {
