@@ -14,6 +14,7 @@ import {showErrorToast} from '../Utils/toast'
 // Page and component imports
 import Quiz from './Quiz';
 import Home from './Home';
+import PageLoader from '../Components/Loaders/PageLoader';
 
 class App extends React.Component<{}, AppState> {
   constructor(props: {} | Readonly<{}>) {
@@ -65,7 +66,7 @@ class App extends React.Component<{}, AppState> {
       <>
         {!this.state.started && !this.state.loading && <Home handleGameStartClick={this.handleGameStart}/>}
         {this.state.started  && !this.state.loading && <Quiz/>}
-        {this.state.loading && <h3>Loading...</h3>}
+        {this.state.loading && <PageLoader text="Loading..."/>}
         <ToastContainer 
           position="top-right"
           autoClose={3000}
